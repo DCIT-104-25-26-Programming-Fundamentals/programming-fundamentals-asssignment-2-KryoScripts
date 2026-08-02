@@ -42,3 +42,65 @@
 #include <iostream>
 using namespace std;
 
+int calculateSum(int arr[], int number){
+  int sum = 0;
+  for (int i = 0; i < number; i++){
+    sum += arr[i];
+  }
+  return sum;
+}
+
+double calculateAverage(int arr[], int number){
+  return (double)calculateSum(arr, number)/number;
+}
+
+int findMax(int arr[], int number){
+  int max = arr[0];
+  for (int i = 1; i < number; i++){
+    if (arr[i] > max){
+      max = arr[i];
+    }
+  }
+  return max;
+}
+
+int findMin(int arr[], int number){
+  int min = arr[0];
+  for (int i = 1; i < number; i++){
+    if (arr[i] > min){
+      min = arr[i];
+    }
+  }
+  return min;
+}
+
+
+int main(){
+  int number;
+
+  cout << "How many numbers?";
+  cin >> number;
+
+  if (number <= 0){
+    cout << "Error: N must be a positive integer." << endl;
+    return 0;
+  }
+  
+  int*arr = new int[number];
+
+  for (int i = 0; i < number; i++){
+    cout << "Enter number" << i + 1 <<":";
+    cin >> arr[i];
+  }
+
+cout << endl;
+cout << "Results:" << endl;
+cout << "Sum:    " << calculateSum(arr, number) << endl;
+cout << "Average:" << calculateAverage(arr, number) << endl;
+cout << "Maximum:" << findMax(arr, number) << endl;
+cout << "Minimum:" << findMin(arr, number) << endl;
+
+delete[] arr;
+
+return 0;
+}
